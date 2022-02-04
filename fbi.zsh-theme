@@ -82,16 +82,16 @@ bureau_git_prompt() {
 }
 
 
-_PATH="%{$fg_bold[green]%}%~%{$reset_color%}"
+_PATH="%{$bg_bold[blue]$fg[white]%}%~%{$reset_color%}"
 
 if [[ $EUID -eq 0 ]]; then
   _USERNAME="%{$fg_bold[red]%}%n"
   _LIBERTY="%{$fg[red]%}#"
 else
-  _USERNAME="%{$fg_bold[white]%}%n"
-  _LIBERTY="%{$fg[green]%}$"
+  _USERNAME="%{$bg_bold[yellow]$fg_bold[white]%}%n"
+  _LIBERTY="%{$fg[blue]%}$"
 fi
-_USERNAME="$_USERNAME%{$reset_color%}@%m"
+_USERNAME="$_USERNAME@%m%{$reset_color%}"
 _LIBERTY="$_LIBERTY%{$reset_color%}"
 
 
@@ -110,7 +110,7 @@ get_space () {
   echo $SPACES
 }
 
-_1LEFT="$_USERNAME $_PATH"
+_1LEFT="[$_USERNAME|$_PATH]"
 _1RIGHT="[%*] "
 
 bureau_precmd () {
@@ -125,3 +125,4 @@ RPROMPT='$(nvm_prompt_info) $(bureau_git_prompt)'
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd bureau_precmd
+
