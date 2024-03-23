@@ -1,4 +1,8 @@
-# oh-my-zsh Bureau Theme
+# oh-my-zsh FBI Theme based on Bureau Theme
+
+SEGMENT_SEPARATOR="\ue0b0"
+SEGMENT_SEPARATOR_YELLOW="\033[33m\033[44m${SEGMENT_SEPARATOR}\033[0m"
+SEGMENT_SEPARATOR_BLUE="\033[34m${SEGMENT_SEPARATOR}\033[0m"
 
 ### NVM
 
@@ -95,28 +99,11 @@ _USERNAME="$_USERNAME@%m%{$reset_color%}"
 _LIBERTY="$_LIBERTY%{$reset_color%}"
 
 
-get_space () {
-  local STR=$1$2
-  local zero='%([BSUbfksu]|([FB]|){*})'
-  local LENGTH=${#${(S%%)STR//$~zero/}}
-  local SPACES=""
-  (( LENGTH = ${COLUMNS} - $LENGTH - 1))
-
-  for i in {0..$LENGTH}
-    do
-      SPACES="$SPACES "
-    done
-
-  echo $SPACES
-}
-
-_1LEFT="[$_USERNAME|$_PATH]"
-_1RIGHT="[%*] "
+_PRECMD=$(echo -e "${_USERNAME}${SEGMENT_SEPARATOR_YELLOW}${_PATH}${SEGMENT_SEPARATOR_BLUE}")
 
 bureau_precmd () {
-  _1SPACES=`get_space $_1LEFT $_1RIGHT`
   print
-  print -rP "$_1LEFT$_1SPACES$_1RIGHT"
+  print -rP "${_PRECMD}"
 }
 
 setopt prompt_subst
