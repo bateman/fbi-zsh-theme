@@ -92,7 +92,7 @@ if [[ $EUID -eq 0 ]]; then
   _USERNAME="%{$fg_bold[red]%}%n"
   _LIBERTY="%{$fg[red]%}#"
 else
-  _USERNAME="%{$bg_bold[yellow]$fg_bold[white]%}%n"
+  _USERNAME="%{$bg_bold[yellow]$fg_bold[black]%}%n"
   _LIBERTY="%{$fg[blue]%}$"
 fi
 _USERNAME="$_USERNAME@%m%{$reset_color%}"
