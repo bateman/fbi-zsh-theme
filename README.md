@@ -1,4 +1,5 @@
-# ohmyzsh-theme-bureau
+# FBI zsh theme
+
 A fork and customization of the default theme Bureau for ohmyzsh
 
 ![screenshot](images/screenshot.png)
